@@ -4,7 +4,7 @@ const User = require('../models/user')
 
  exports.getTicket= async (req,res)=>{
     try{
-     const ticket= await Ticket.find()
+     const ticket= await Ticket.find().populate('user_id')
      res.json(ticket)
     }catch (err){
      return res.status(500).json({msg:err.message})

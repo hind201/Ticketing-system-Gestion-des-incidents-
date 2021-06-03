@@ -16,7 +16,7 @@ const  user = new User({
          return res.status(400).send(err)
         }
         console.log(user)
-res.send({user})
+res.send({user:user,message:"Created success"})
 
 });
 }
