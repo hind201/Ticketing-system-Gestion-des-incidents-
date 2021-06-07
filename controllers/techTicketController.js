@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 exports.getAssignedTicket = (req, res, next) => {
 
     Assign.find({technicien_id: res.currentUser._id})
-    .populate('ticket_id user_id')
+    .populate('ticket_id user_id ')
     .then(data => {
          return res.json(data)
     })
@@ -15,6 +15,18 @@ exports.getAssignedTicket = (req, res, next) => {
     
 
 }
+// exports.getAssignedTicket = async (req, res) => {
+//     try {
+//         const ticket = await Assign.find({ technicien_id: res.currentUser._id }).populate('ticket_id user_id').select('').limit(1);
+//         if (ticket.length > 0) {
+//             return res.status(200).json(ticket)
+//         } else {
+//             return res.status(404).json('There is no ticket')
+//         }
+//     } catch (error) {
+//         throw Error(error)
+//     }
+// }
 exports.resolvedTicket = async (req, res) => {
     try {
         const ticket = await Ticket.findOne({ _id: req.params.id });

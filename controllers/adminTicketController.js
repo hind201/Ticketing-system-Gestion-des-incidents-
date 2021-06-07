@@ -49,9 +49,9 @@ exports.assignTicket = (req, res) => {
     const { user_id, ticket_id, technicien_id} = req.body
     
     new Assign({
-       
+        user_id: user_id,
         ticket_id: ticket_id,
-        technicien_id: technicien_id
+        technicien_id: technicien_id,type:'technicien'
     })
     .save()
     .then(() => {
@@ -75,51 +75,16 @@ exports.getCloseTicket = (req, res) => {
 } 
 
 exports.getRefusedTicket = (req, res) => {
-    Assign.find({status:'re-waiting'})
-    .populate('ticket_id user_id technicien_id')
+    Ticket.find({status:'re-waiting'})
+    .populate('user_id' )
     .then(data => {
          return res.json(data)
     })
 }
-// exports.assignTicket = async (req, res) => {
-//     try {
-//         const { technicien_id, ticket_id} = req.body;
-//         console.log('req body', req.body)
-//         const technicien = await User.findOne({  _id: technicien_id })
-//         const findTicket = await Assign.findOne({ _id: ticket_id }).populate('ticket_id');
-//         console.log('find ticket', findTicket)
-
-//         if (findTicket === null) {
-//             const assign = new Assign({
-//                 ticket_id: ticket_id,
-//                 technicien_id: technicien._id
-//             })
-//             const updated = await Ticket.findByIdAndUpdate({ _id: ticket_id }, { etat: 'assigned' });
-//             const assigned = await assign.save()
-//             if (assigned && updated) return res.status(201).json(assign)
-//         } else {
-//             if (findTicket.ticket_id._id == ticket_id &&
-//                 findTicket.id_technicien == (technicien._id).toString() &&
-//                 (findTicket.ticket_id.etat == 'assigned' || findTicket.ticket_id.etat == 're-assigned')) {
-//                 return res.status(400).json(`ticket already assigned to ${technicien. id_technicien }`)
-//             }
-//             const assign = new Assign({
-//                 ticket_id : ticket_id,
-//                 id_technicien: technicien._id
-//             })
-//             if (findTicket.ticket_id.etat == 'waiting') {
-//                 await Ticket.findByIdAndUpdate({ _id: ticket_id }, { etat: 'assigned' });
-
-//             }
-//             if (findTicket.ticket_id.etat == 're-waiting') {
-//                 await Ticket.findByIdAndUpdate({ _id: ticket_id }, { etat: 're-assigned' });
-//             }
-//             const assigned = await assign.save()
-//             if (assigned) return res.status(201).json(assign)
-//         }
-//     } catch (error) {
-//         throw Error(error)
-//     }
-
-// }
+exports.getTechnicien = (req, res) => {
+    User.find({role:'technicien'}).select('-password')
+    .then(data => {
+         return res.json(data)
+    })
+}
 

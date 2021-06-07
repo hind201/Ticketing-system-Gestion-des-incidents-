@@ -4,6 +4,7 @@
 import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import Button from '@material-ui/core/Button';
 
 function GetTicket() {
     const [getTicket, setGetTicket]=useState([])
@@ -51,7 +52,7 @@ function GetTicket() {
                 <td>
                  
                 </td>
-                <td><Link to={`/getTicket=${Data._id}`} className="btn btn-secondary sm"><i className="fas fa-paper-plane"></i></Link></td>
+                <td><Link to={`/assign=${Data._id}`} className="btn btn-secondary ">Assign</Link></td>
           </tr>
            ))
          }

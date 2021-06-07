@@ -62,7 +62,7 @@ function Tickets() {
                                         <td>{val.title}</td>
                                         <td>{val.type}</td>
                                         <td>{val.priority}</td>
-                                        <td>{val.status === 'waiting' ? <b style={{color: "pink"}}>waiting</b> : (val.status === 'assigned' ? <b style={{color: "yellow"}}>Assigned</b> : <b style={{color: "green"}}>Resolved </b> )}</td>
+                                        <td>{val.status === 'waiting' ? <b style={{color: "pink"}}>waiting</b> : (val.status === 'assigned' ? <b style={{color: "red"}}>Assigned</b> : <b style={{color: "green"}}>Resolved </b> )}</td>
                                         <td>
                                              <button onClick={()=>{deleteTicket(val._id)}} className="btn btn-secondary sm mr-1"><b style={{color: "red"}}>Delete</b></button>
                                         </td>

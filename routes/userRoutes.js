@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {register,login,signout}=require('../controllers/userController')
 const {creatTicket,getTicketUser,updateTicket,deleteTicket }=require('../controllers/userTicketController')
-const {getTicket,assignTicket,getTecketAssigned,getOneTicket,getCloseTicket,getRefusedTicket}=require('../controllers/adminTicketController')
+const {getTicket,assignTicket,getTecketAssigned,getOneTicket,getCloseTicket,getRefusedTicket,getTechnicien}=require('../controllers/adminTicketController')
 const {getAssignedTicket ,resolvedTicket,refuseTicket}=require('../controllers/techTicketController')
 
 const {auth}=require('../middlewares/auth')
@@ -23,6 +23,7 @@ router.post('/assignTicket',assignTicket)
  router.get('/getOneTicket/:id',getOneTicket)
  router.get('/getCloseTicket',getCloseTicket)
  router.get('/getRefusedTicket',getRefusedTicket)
+ router.get('/getTechnicien',getTechnicien)
 //technicien
 router.get('/getAssignedTicket',auth('technicien'),getAssignedTicket)
 router.post('/resolvedTicket/:id', auth('technicien'), resolvedTicket);

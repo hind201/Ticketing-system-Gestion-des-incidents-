@@ -47,7 +47,7 @@ function Login(props) {
                
             </div>
              <button className="btn btn-lg btn-block btn-outline-success">Login</button>
-            {/* { JSON.stringify(user)} */}
+          
         </form>
    )
    return (
