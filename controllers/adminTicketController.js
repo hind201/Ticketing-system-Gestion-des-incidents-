@@ -75,8 +75,8 @@ exports.getCloseTicket = (req, res) => {
 } 
 
 exports.getRefusedTicket = (req, res) => {
-    Ticket.find({status:'re-waiting'})
-    .populate('user_id' )
+    Assign.find({status:'re-waiting'})
+    .populate('user_id ticket_id technicien_id' )
     .then(data => {
          return res.json(data)
     })

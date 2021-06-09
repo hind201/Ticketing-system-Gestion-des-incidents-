@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from "react"
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
+
+import NavBarAdmin from './navBarAdmin'
+
+
 
 
 function Single() {
@@ -46,7 +49,7 @@ function Single() {
 
      return (
           <>
-        
+         <NavBarAdmin/>
           <div id="wrapper">
 
       

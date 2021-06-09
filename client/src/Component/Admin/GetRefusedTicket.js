@@ -1,15 +1,16 @@
 
 import React, {useState,useEffect}  from "react"
 import axios from 'axios'
-import Button from '@material-ui/core/Button';
+import NavBarAdmin from './navBarAdmin'
+
 
 function GetResolvedTicket() {
 
-  const  [resolved,setResolved]=useState([])
+  const  [refused,setRefused]=useState([])
   const GetAllTicket=()=>{
     axios.get('http://localhost:7000/api/getRefusedTicket')
     .then(response=>{
-        setResolved(response.data) 
+        setRefused(response.data) 
     })
 }
 
@@ -20,9 +21,11 @@ useEffect(()=>{
     
 
 return (
+  <>
+     <NavBarAdmin/>
     <div>
     <div className="container">
-        <h1>Ticket Closed</h1>
+        <h1>Ticket Refused</h1>
          <table class="table">
     <thead>
       <tr>
@@ -36,7 +39,7 @@ return (
       </tr>
     </thead>
     <tbody>
-     {resolved.map((Data)=>(
+     {refused.map((Data)=>(
           <tr >
            <td>{Data.date}</td>
             <td>{Data.title}</td>
@@ -55,6 +58,7 @@ return (
   </table>
 </div>
     </div>
+    </>
 )
 }
 

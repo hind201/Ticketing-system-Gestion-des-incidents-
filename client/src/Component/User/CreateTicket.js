@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import NavBarUser from './NavBarUser'
 
 function CreateTicket() {
 
@@ -73,7 +74,8 @@ function CreateTicket() {
           </form>
      )
      return (
-      
+          <>
+        <NavBarUser/>
       <div>
          <div title="Contact Us">
              <div className="row"> 
@@ -86,6 +88,7 @@ function CreateTicket() {
   
          </div>
       </div>
+      </>
   )
  
 

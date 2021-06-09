@@ -4,7 +4,8 @@
 import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
-import Button from '@material-ui/core/Button';
+
+import NavBarAdmin from './navBarAdmin'
 
 function GetTicket() {
     const [getTicket, setGetTicket]=useState([])
@@ -24,6 +25,8 @@ function GetTicket() {
    
 
     return (
+      <>
+       <NavBarAdmin/>
         <div>
         <div className="container">
             <h1>Ticket List</h1>
@@ -60,6 +63,7 @@ function GetTicket() {
       </table>
     </div>
         </div>
+        </>
     )
 }
 

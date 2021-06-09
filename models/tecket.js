@@ -7,8 +7,8 @@ const ticketSchema = new mongoose.Schema({
     },
 
     description:{
-    type:String,
-    required:true
+           type:String,
+           required:true
     },
     type:{
         type:String,

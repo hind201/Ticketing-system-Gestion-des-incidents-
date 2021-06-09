@@ -1,7 +1,7 @@
 
 const Ticket = require('../models/tecket')
 const User = require('../models/user')
-// const jwt = require('jsonwebtoken')
+
 
 exports.creatTicket =(req,res)=>{
 const  {title,description,type,priority,status}= req.body;
