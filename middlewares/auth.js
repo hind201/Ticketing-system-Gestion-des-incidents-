@@ -22,16 +22,4 @@ exports.auth = (Role) => (req, res, next) => {
   };
 
 
-    // if (token) {
-    //   jwt.verify(token,process.env.JWT, async (err, decodedtoken) => {
-    //     console.log(decodedtoken);
-    //     if (!err && decodedtoken.role === type) {
-    //       res.currentUser = await User.findById(decodedtoken.id)
-    //       next();
-    //     } else {
-    //      res.status(400).clearCookie('jwt').json('you are not authorized');
-    //     }
-    //   });
-    // } else {
-    //  res.status(400).json({isAuth: false , role:''});
-    // }
+    

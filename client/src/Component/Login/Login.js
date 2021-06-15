@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {UserContext }from '../Context'
 import axios from 'axios'
 import NavBar from '../Nav/NavBar'
+
 axios.defaults.withCredentials = true
 
 
 function Login(props) {
-
+  const {setData} = useContext(UserContext)
+ 
     const[login, setLogin] = useState({  email:'',  password:''})
+  
    
     const handelChange = (e)=>{
         const {name,value} = e.target
@@ -18,18 +22,30 @@ function Login(props) {
           e.preventDefault()
    try {
        const res = await  axios.post("http://localhost:7000/api/login" , login, {withCredentials:true})
+      
+     
        if(res){
+         
        
+       setData(res.data)
+      
+      //  localStorage.setItem('jwt_info',JSON.stringify(res))
         if(res.data.isAuth && res.data.role === 'admin') props.history.push('/admin')
         if(res.data.isAuth && res.data.role === 'user') props.history.push('/user')
         if(res.data.isAuth && res.data.role === 'technicien') props.history.push('/technicien')
-       
+      
     }
+    
+  
+
+      
+       
+    
     } catch (error) {
         if(error) console.log(error.response);
     }
 
- 
+
     }
 
 
@@ -54,6 +70,7 @@ function Login(props) {
 
                        <button className="btn btn-lg btn-block btn-outline-info">Login</button>
                   </form>
+                  
                  
                   </div>
              </div>

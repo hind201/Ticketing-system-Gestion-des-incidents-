@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Route, Redirect } from 'react-router-dom'
+// import {UserContext} from '/Component/Contextimpo
+import {UserContext} from '../Context'
 
-
-const ProtectedAdmin = ({ isAuth, role, component: Component, ...rest }) => {
+const ProtectedAdmin = ({comp: Component, ...rest }) => {
+     const {data:{isAuth, role}}=useContext(UserContext)
      return (
           <Route
                {...rest}
@@ -20,6 +22,4 @@ const ProtectedAdmin = ({ isAuth, role, component: Component, ...rest }) => {
           />
      )
 }
-
-
 export default ProtectedAdmin

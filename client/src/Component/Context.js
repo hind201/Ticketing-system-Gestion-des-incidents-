@@ -1,29 +1,22 @@
-import React, { createContext, useState, useEffect } from 'react'
-import axios from 'axios'
 
-export const Context = createContext(null)
+import React, { createContext, useState} from "react";
 
 
-export function UserProvider({ children }) {
+// create context
+export const UserContext = createContext(null);
 
-     const [isAuth, setIsAuth] = useState(false)
-     const [role, setRole] = useState('')
+export const UserProvider = ({ children }) => {
+  
 
-     useEffect(()=> {
-          axios.get('http://localhost:7000').then((response) => {
-               console.log(response.data)
-               setIsAuth(response.data.isAuthenticated)
-               setRole(response.data.role)
-          })
-          .catch(err => { console.log(err) })
-     }, [])
+  const [data, setData] = useState({ isAuth: false, role: "" });
+ 
+   
+
+  return (
+    <UserContext.Provider value={{data,setData}}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
 
-     return (
-          <>
-               <Context.Provider value={{isAuth: isAuth, role: role}}>
-                    {children}
-               </Context.Provider>
-          </>
-     )
-}
