@@ -21,7 +21,7 @@ const ticketSchema = new mongoose.Schema({
 
     status:{ 
         type:String,
-        ennum:['waiting', 'assigned', 're-waiting', 're-assigned', 'resolved'], 
+        ennum:['waiting', 'assigned', 're-waiting', 'resolved'], 
         default: 'waiting'
                 // en attente, affecter(re), cloturé
        

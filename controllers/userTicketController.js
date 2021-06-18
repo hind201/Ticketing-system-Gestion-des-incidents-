@@ -26,25 +26,14 @@ const ticket = new Ticket({
 }
 
 
-// READ
-// exports.readTicket = (req,res)=>{
-//     Ticket.findById(req.params.id)
-//     .then(data => {res.json(data)
-//    })
 
-// }
-// ((req, res) => {
-// 	Ticket.find()
-// 		.then(tickets => res.json(tickets))
-// 		.catch(err => res.status(400).json('Error: ' + err));
-// });
 
 exports.getTicketUser = (req, res) => {
     Ticket.find().populate('user_id').then(data => {
          return res.json(data)
     })
 }
-// UPDATE
+//UPDATE
 exports.updateTicket=(req,res) => {
 
     Ticket.findById(req.params.id)

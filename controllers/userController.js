@@ -38,12 +38,8 @@ exports.login=(req,res)=>{
     return res.status(200).cookie('token', token, {
       maxAge: 600000000,
       httpOnly: true,
-    }).json({isAuth: true, role: user.role,message:`is ${user.role}`})
-    // const { _id,name,email,department, role } = user;
-
-    //  res.json({
-    //     token, user: {_id, name, email,department, role}
-    // }) 
+    }).json({isAuth: true, role: user.role})
+  
 })
 
 }  

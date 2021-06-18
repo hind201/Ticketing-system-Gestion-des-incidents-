@@ -52,7 +52,7 @@ function Login(props) {
     return (
         <>
         <NavBar/>
-        <div className="container">
+        <div className="container login">
              <div className="row justify-content-center">
                   <div className="col-lg-6 mt-4">
                   <h1>Login</h1>
@@ -60,15 +60,15 @@ function Login(props) {
                   <form onSubmit={submit}>
                        <div className="form-group">
                        <label htmlFor="email" className="text-muted">Email</label>
-                     <input onChange={handelChange} type="email" className="form-control border-info" name="email" />
+                     <input onChange={handelChange} type="email" className="form-control   "  id='bg'name="email" />
                        </div>
 
                        <div className="form-group">
                        <label htmlFor="password" className="text-muted">Password</label>
-                                         <input onChange={handelChange} type="password" className="form-control border-info" name="password" />
+                                         <input onChange={handelChange} type="password" className="form-control " id='bg' name="password" />
                        </div>
 
-                       <button className="btn btn-lg btn-block btn-outline-info">Login</button>
+                       <button className="btn btn-lg btn-block btn-outline" id='bgg'>Login</button>
                   </form>
                   
                  

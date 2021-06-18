@@ -6,7 +6,7 @@ export default function User() {
         <>
         <NavBarUser/>
         <div>
-            <h1>user</h1>
+            <h1 className='title'> Welcome to User</h1>
         </div>
         </>
     )

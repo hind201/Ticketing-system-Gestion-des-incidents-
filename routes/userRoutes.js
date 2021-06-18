@@ -24,6 +24,7 @@ router.post('/assignTicket',assignTicket)
  router.get('/getCloseTicket',getCloseTicket)
  router.get('/getRefusedTicket',getRefusedTicket)
  router.get('/getTechnicien',getTechnicien)
+
 //technicien
 router.get('/getAssignedTicket',auth('technicien'),getAssignedTicket)
 router.post('/resolvedTicket/:id', auth('technicien'), resolvedTicket);

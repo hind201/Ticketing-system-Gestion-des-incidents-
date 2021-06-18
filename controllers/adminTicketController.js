@@ -2,7 +2,7 @@ const Ticket = require ('../models/tecket')
 const Assign = require('../models/assign')
 const User = require('../models/user')
 
- exports.getTicket= async (req,res)=>{
+ exports.getTicket = async (req,res)=>{
     try{
      const ticket= await Ticket.find().populate('user_id')
      res.json(ticket)
@@ -19,43 +19,18 @@ exports.getOneTicket = (req, res) => {
 }
 
 
-
-
-// UPDATE
-// exports.updateTicket=(req,res) => {
-
-//     Ticket.findById(req.params.id)
-//         .then(ticket => {
-// 	    	ticket.title = req.body.title;
-// 	    	ticket.description = req.body.description;
-// 	    	ticket.type = req.body.type;
-//             ticket.priority = req.body.priority;
-// 	    	ticket.status = req.body.status;
-	    
-
-//             ticket.save()
-//                 .then(() => res.json('Ticket updated'))
-//                 .catch(err => res.status(400).json('Error: ' + err));
-//     	})
-//         .catch(err => res.status(400).json('Error: ' + err));
-// };
-
-exports.deleteTicket= (req,res)=>{
-    Ticket.findByIdAndDelete(req.params.id)
-    .then(ticket => res.json('Ticket deleted.'))
-    .catch(err => res.status(400).json('Error: ' + err));
-}
 exports.assignTicket = (req, res) => {
     const { user_id, ticket_id, technicien_id} = req.body
     
     new Assign({
         user_id: user_id,
         ticket_id: ticket_id,
-        technicien_id: technicien_id,type:'technicien'
+        technicien_id: technicien_id,
     })
     .save()
     .then(() => {
-         Ticket.findByIdAndUpdate(ticket_id,{status:'assigned'}).then(() => {
+         Ticket.findByIdAndUpdate(ticket_id,
+            {status:'assigned'}).then(() => {
               res.json({message: 'Ticket is assigned'})
          })
     })

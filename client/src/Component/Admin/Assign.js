@@ -7,7 +7,7 @@ import NavBarAdmin from './navBarAdmin'
 
 
 
-function Single() {
+function Assign() {
      const { id } = useParams()
      const [ticket, setTicket] = useState([])
      const [techList, setTechList] = useState([])
@@ -40,8 +40,8 @@ function Single() {
      const assigns = (e) => {
           e.preventDefault()
           axios.post('http://localhost:7000/api/assignTicket', {
+          
             ticket_id: id,
-            
             technicien_id: technicien_id
           })
      }
@@ -56,13 +56,13 @@ function Single() {
 
           <div id="page-content-wrapper">
                <div className="container-fluid">
-                    <h1>Assign Ticket</h1>
+                    <h1 className='name'>Assign Ticket</h1>
 
                     <div className="row justify-content-center">
                          <div className="col-lg-6 mt-4">
                          {/* FORM */}
                          <form onSubmit={assigns}>
-                              <fieldset disabled>
+                             
                               <div className="form-group">
                                    <label>Date</label>
                                    <input type="text" className="form-control" value={ticket.date} />
@@ -83,11 +83,11 @@ function Single() {
                                    <label>Priority</label>
                                    <input type="text" className="form-control" value={ticket.priority} />
                               </div>
-                              </fieldset>
+                           
                               <div className="form-group">
                                    <label>Technician</label>
                                    <select className="custom-select" name="technicien_id" onChange={onChange}>
-                                        <option>Technicien...</option>
+                                        <option>Technicien</option>
                                         {techList.map((tech) => (
                                              ticket.type === tech.department ?
                                              <option value={tech._id}>{tech.firstName} ({tech.department})</option>
@@ -98,7 +98,7 @@ function Single() {
                               <button type="submit" className="btn btn-primary mt-3">Assign</button>
 
                          </form>
-                         {/* **************************************** */}
+                        
                          </div>
                     </div>
                </div>
@@ -108,4 +108,4 @@ function Single() {
      )
 }
 
-export default Single
+export default Assign

@@ -1,12 +1,40 @@
+body{
+  background-image: url('../src/img/green.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.name{
+   color: #2F5D62;
 }
 
+.title{
+  text-align: center;
+  color: #2F5D62;
+  margin-top: 300px;
+}
+.bg{
+background-color: #5E8B7E;
+
+}
+ #bg {
+ background-color: #DFEEEA
+
+} 
+#bgg{
+  background-color: #A7C4BC;
+  /* color: #A7C4BC */
+ 
+ } 
+
+.nav-link{
+  color:#DFEEEA;
+}
+.navbar{
+height: 100px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -36,3 +64,9 @@
     transform: rotate(360deg);
   }
 }
+
+
+.login{
+  margin-top: 140px;
+}
+

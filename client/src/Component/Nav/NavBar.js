@@ -5,7 +5,7 @@ function NavBar() {
     
 
     return (
-   <nav class="navbar navbar-expand-sm navbar-dark bg-info">
+   <nav class="navbar navbar-expand-sm navbar-dark bg">
        <a class="navbar-brand" href="#">Ticket System</a>
       
        <div class="collapse navbar-collapse" id="collapsibleNavId">

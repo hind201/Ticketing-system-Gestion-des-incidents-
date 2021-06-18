@@ -1,6 +1,3 @@
-
-
-
 import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
@@ -20,6 +17,7 @@ function GetTicket() {
     useEffect(()=>{
         getAllTicket () 
     },[])
+    
 
         
    
@@ -29,7 +27,7 @@ function GetTicket() {
        <NavBarAdmin/>
         <div>
         <div className="container">
-            <h1>Ticket List</h1>
+            <h1 className='name'>Ticket List</h1>
              <table class="table">
         <thead>
           <tr>
@@ -44,6 +42,7 @@ function GetTicket() {
         </thead>
         <tbody>
          {getTicket.map((Data)=>(
+         
               <tr >
                <td>{Data.date}</td>
                 <td>{Data.user_id.firstName +'' + Data.user_id.lastName}</td>
@@ -55,8 +54,23 @@ function GetTicket() {
                 <td>
                  
                 </td>
-                <td><Link to={`/assign=${Data._id}`} className="btn btn-secondary ">Assign</Link></td>
+                
+                {
+                   (Data.status !== 'resolved' ) && (
+                     <>
+                    <td><Link to={`/assign=${Data._id}`} className="btn btn-secondary border-success  ">Assign</Link></td>
+                     
+                      
+                      </>
+                   )}
+               
+            
+
+               
+               
           </tr>
+          
+          
            ))
          }
         </tbody>

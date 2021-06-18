@@ -6,7 +6,7 @@ function Technicien() {
         <>
         <NavBarTech/>
         <div>
-            <h1>technicien</h1>
+            <h1 className='title'> Welcom To Technicien</h1>
         </div>
         </>
     )

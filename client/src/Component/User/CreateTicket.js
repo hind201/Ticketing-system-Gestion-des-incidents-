@@ -16,7 +16,7 @@ function CreateTicket() {
           e.preventDefault();
          await axios.post('http://localhost:7000/api/creatTicket', createTicket)
           .then((response)=>{
-               console.log(response+'Data Inserted!')
+               console.log(response)
           })
           .catch((error) => {console.log(error)})
      }
@@ -32,15 +32,14 @@ function CreateTicket() {
      const form = () =>(
           <form onSubmit={createTickets}>
            
-           <button className='btnn'><Link to="/user" className="btn ">
           
-          Back to page User
-            </Link> </button>
+          
+        
                <h2 className="modal-title" id="exampleModalLabel">Create Ticket</h2>
               <div className="from-group">
               <div className="form-group">
                                    <label htmlFor="registration_number">Title</label>
-                                   <input type="text" className="form-control" name="title" onChange={hundelChange} />
+                                   <input type="text" className="form-control border-success" name="title" onChange={hundelChange} />
                               </div>
 
                
@@ -48,11 +47,11 @@ function CreateTicket() {
               
             <div className="form-group">
                                    <label htmlFor="mark">Description</label>
-                                   <textarea className="form-control" name="description" rows="4"  onChange={hundelChange} ></textarea >
+                                   <textarea className="form-control border-success" name="description" rows="4"  onChange={hundelChange} ></textarea >
                               </div>
                               <div className="form-group">
                                    <label>Type</label>
-                                   <select className="custom-select" name="type"  onChange={hundelChange}  >
+                                   <select className="custom-select border-success" name="type"  onChange={hundelChange}  >
                                         <option>Type...</option>
                                         <option value='hardware'>Hardware</option>
                                         <option value='software'>Software</option>
@@ -61,7 +60,7 @@ function CreateTicket() {
             
                               <div className="form-group">
                                    <label>Priority</label>
-                                   <select className="custom-select" name="priority"  onChange={hundelChange} >
+                                   <select className="custom-select border-success" name="priority"  onChange={hundelChange} >
                                         <option>Priority Type...</option>
                                         <option value='urgent'>Urgent</option>
                                         <option value='pas urgent'>Pas urgent</option>

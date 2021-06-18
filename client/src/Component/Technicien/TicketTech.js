@@ -7,11 +7,11 @@ import NavBarTech from './NavBarTech'
 
 
 function TicketTech() {
-     const [ticketList, setTicketList] = useState([])
+     const [ticket, setTicket] = useState([])
 
      useEffect(()=> {
           axios.get('http://localhost:7000/api/getAssignedTicket').then(response => {
-               setTicketList(response.data)
+               setTicket(response.data)
                console.log(response)
           })
      }, [])
@@ -41,12 +41,12 @@ function TicketTech() {
           <>
             <NavBarTech/>
                <div className="container-fluid">
-                    <h1>Ticket technician </h1>
+                    <h1 className='name'>Ticket technician </h1>
 
                     <div className="row">     
                          <table className="table mt-4">
                               {/* Header Table */}
-                              <thead className="thead-dark">
+                              <thead className="thead">
                               <tr>
                                    <th>Date</th>
                                    <th>Title</th>
@@ -62,28 +62,31 @@ function TicketTech() {
                               {/* Body Table */}
                               <tbody>
 
-                              {ticketList.map((data, key) => (
+                              {ticket.map((data, key) => (
                                    <tr key={key}>
                                        
                                              <th>{data.date}</th>
                                              <td>{data.ticket_id.title}</td>
                                              <td>{data.ticket_id.priority === 'urgent' ? <b style={{color: "red"}}>Urgent</b> : (data.ticket_id.priority  === 'tres urgent' ? <b style={{color: "orange"}}>tres urgent</b> : <b style={{color: "grey"}}>Normal</b>)}</td>
                                         <th>{data.ticket_id.status}</th>
-                                        {/* <th>{data.user_id.firstName }</th> 
-                                             <th>{data.user_id.phone}</th>  */}
+                                        {/* <th>{data.user_id.firstName +'' + data.user_id.lastName }</th> 
+                                             <th>{data.ticket_id.phone}</th>  */}
                                         <th>{data.ticket_id.description}</th>  
 
-                                          
+                                          {
+                                               (data.ticket_id.status !== 'resolved') &&(
+                                                    <>
                                         
                                              <td>
                                        
-                                                  <button type="button" className="btn btn-outline-info btn-sm ml-5" onClick={()=> {resolvedTicket( data.ticket_id._id)}} >Accept</button>
+                                                  <button type="button" className="btn btn-outline-success btn-sm ml-5" onClick={()=> {resolvedTicket( data.ticket_id._id)}} >Resolve</button>
                                                   <button type="button" className="btn btn-outline-danger btn-sm ml-5" onClick={()=> {refuseTicket(data.ticket_id._id)}}  >Refuse</button> 
                                             
 
                                              
                                         </td> 
-                                        
+                                        </>
+                                        )}
                                    
                                      
 

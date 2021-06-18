@@ -15,18 +15,7 @@ exports.getAssignedTicket = (req, res, next) => {
     
 
 }
-// exports.getAssignedTicket = async (req, res) => {
-//     try {
-//         const ticket = await Assign.find({ technicien_id: res.currentUser._id }).populate('ticket_id user_id').select('').limit(1);
-//         if (ticket.length > 0) {
-//             return res.status(200).json(ticket)
-//         } else {
-//             return res.status(404).json('There is no ticket')
-//         }
-//     } catch (error) {
-//         throw Error(error)
-//     }
-// }
+
 exports.resolvedTicket = async (req, res) => {
     try {
         const ticket = await Ticket.findOne({ _id: req.params.id });
@@ -35,9 +24,9 @@ exports.resolvedTicket = async (req, res) => {
             ticket_id: req.params.id,
             technicien_id: res.currentUser._id
         })
-        const updateEtat = await Ticket.findByIdAndUpdate({ _id: req.params.id }, { status: 'resolved' });
+        const updateStatus = await Ticket.findByIdAndUpdate({ _id: req.params.id }, { status: 'resolved' });
         const assigned = await assign.save()
-        if (assigned && updateEtat) return res.status(201).json([{ assign }, { updateEtat }])
+        if (assigned && updateStatus ) return res.status(201).json([{ assign }, { updateStatus  }])
     } catch (error) {
         throw Error(error)
     }

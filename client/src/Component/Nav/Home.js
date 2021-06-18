@@ -6,7 +6,7 @@ function Home() {
         <>
         <NavBar/>
         <div>
-            <h1>Ticket system</h1>
+            <h1 className='title'>Ticket system</h1>
         </div>
         </>
     )

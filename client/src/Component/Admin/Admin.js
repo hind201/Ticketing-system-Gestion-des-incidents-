@@ -6,7 +6,7 @@ function Admin() {
         <>
         <NavBarAdmin/>
         <div>
-            <h1> Welcome to admin</h1>
+            <h1 className='title'> Welcome to admin</h1>
         </div>
         </>
     )
